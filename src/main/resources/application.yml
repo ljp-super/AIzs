@@ -1,0 +1,139 @@
+spring:
+  application:
+    name: yu-ai-agent
+  profiles:
+    active: local
+  datasource:
+    url: jdbc:mysql://localhost:3306/yu_ai_agent?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&createDatabaseIfNotExist=true
+    username: ${MYSQL_USERNAME:root}
+    password: ${MYSQL_PASSWORD:root}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  # Redis 配置: 用于缓存、ChatMemory 持久化
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+      password: ${REDIS_PASSWORD:}
+      timeout: 5000ms
+      lettuce:
+        pool:
+          max-active: 8
+          max-idle: 4
+          min-idle: 0
+  # 缓存配置
+  cache:
+    type: redis
+    cache-names: embedding-cache, query-cache
+  ai:
+    deepseek:
+      api-key: ${DEEPSEEK_API_KEY:your-deepseek-api-key}
+      chat:
+        options:
+          model: ${DEEPSEEK_MODEL:deepseek-chat}
+    dashscope:
+      api-key: ${DASHSCOPE_API_KEY:your-dashscope-api-key}
+      chat:
+        options:
+          model: ${DASHSCOPE_CHAT_MODEL:qwen-turbo}
+      embedding:
+        options:
+          model: ${DASHSCOPE_EMBEDDING_MODEL:text-embedding-v4}
+# 临时注释掉，便于大家开发调试和部署（实际需要启动 MCP 服务）
+#    mcp:
+#      client:
+#        sse:
+#          connections:
+#            server1:
+#              url: http://localhost:8127
+#        stdio:
+#          servers-configuration: classpath:mcp-servers.json
+# 临时注释掉，便于大家开发调试和部署（实际需要启动 PgVector 数据库）
+#    vectorstore:
+#      pgvector:
+#        index-type: HNSW
+#        dimensions: 1536
+#        distance-type: COSINE_DISTANCE
+#        max-document-batch-size: 10000 # Optional: Maximum number of documents per batch
+
+# AI 智能体自定义配置
+ai:
+  # 向量存储文件持久化路径（SimpleVectorStore）
+  vector-store:
+    persist-path: ${VECTOR_STORE_PERSIST_PATH:./data/vector-store.json}
+  # Embedding 缓存配置
+  embedding:
+    cache:
+      maximum-size: 1000
+      expire-after-write: 24h
+  # 模型路由配置
+  routing:
+    # 简单任务（短 prompt）路由到轻量模型
+    simple-threshold: 200
+    simple-model: qwen-turbo
+    complex-model: deepseek-chat
+  # RAG 混合检索配置
+  rag:
+    hybrid:
+      enabled: true
+      # BM25 权重
+      bm25-weight: 0.3
+      # 向量检索权重
+      vector-weight: 0.7
+      # RRF 融合参数
+      rrf-k: 60
+    rerank:
+      # 重排序模型（阿里云 gte-rerank）
+      model: gte-rerank
+      top-k: 3
+
+server:
+  port: 8123
+  servlet:
+    context-path: /api
+
+# Spring Boot Actuator 可观测性配置
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus,trace
+  endpoint:
+    health:
+      show-details: always
+  metrics:
+    tags:
+      application: ${spring.application.name}
+    distribution:
+      percentiles-histogram:
+        http.server.requests: true
+  tracing:
+    sampling:
+      probability: 1.0
+
+# springdoc-openapi config
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: alpha
+  api-docs:
+    path: /v3/api-docs
+  group-configs:
+    - group: 'default'
+      paths-to-match: '/**'
+      packages-to-scan: com.yupi.yuaiagent.controller
+# knife4j config
+knife4j:
+  enable: true
+  setting:
+    language: zh_cn
+search-api:
+  api-key: ${SEARCH_API_KEY:your-search-api-key}
+  provider: serpapi
+# 修改日志级别，查看 Spring AI 更多调用细节
+logging:
+  level:
+    org.springframework.ai: DEBUG
+    com.yupi.yuaiagent: INFO
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] [%X{traceId:-}] %-5level %logger{36} - %msg%n"

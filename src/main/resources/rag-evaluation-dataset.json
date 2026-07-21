@@ -1,0 +1,122 @@
+[
+  {
+    "id": "eval_001",
+    "query": "如何向喜欢的人表白？",
+    "expectedKeywords": ["真诚", "时机", "方式"],
+    "category": "表白"
+  },
+  {
+    "id": "eval_002",
+    "query": "第一次约会应该聊什么话题？",
+    "expectedKeywords": ["轻松", "兴趣", "话题"],
+    "category": "约会"
+  },
+  {
+    "id": "eval_003",
+    "query": "分手后还能做朋友吗？",
+    "expectedKeywords": ["时间", "情绪", "距离"],
+    "category": "分手"
+  },
+  {
+    "id": "eval_004",
+    "query": "和伴侣吵架后怎么和好？",
+    "expectedKeywords": ["沟通", "道歉", "理解"],
+    "category": "沟通"
+  },
+  {
+    "id": "eval_005",
+    "query": "暗恋一个人不敢表白怎么办？",
+    "expectedKeywords": ["暗示", "勇气", "观察"],
+    "category": "暗恋"
+  },
+  {
+    "id": "eval_006",
+    "query": "异地恋怎么维持感情？",
+    "expectedKeywords": ["信任", "沟通", "见面"],
+    "category": "异地恋"
+  },
+  {
+    "id": "eval_007",
+    "query": "和对象吵架了谁先道歉？",
+    "expectedKeywords": ["主动", "包容", "沟通"],
+    "category": "吵架"
+  },
+  {
+    "id": "eval_008",
+    "query": "送女朋友什么生日礼物好？",
+    "expectedKeywords": ["用心", "喜好", "惊喜"],
+    "category": "礼物"
+  },
+  {
+    "id": "eval_009",
+    "query": "表白被拒后还能继续做朋友吗？",
+    "expectedKeywords": ["尊重", "调整", "时间"],
+    "category": "表白被拒"
+  },
+  {
+    "id": "eval_010",
+    "query": "相亲时怎么破冰？",
+    "expectedKeywords": ["自然", "话题", "轻松"],
+    "category": "相亲"
+  },
+  {
+    "id": "eval_011",
+    "query": "女朋友生气了怎么哄？",
+    "expectedKeywords": ["耐心", "关心", "倾听"],
+    "category": "沟通"
+  },
+  {
+    "id": "eval_012",
+    "query": "约会去哪里比较好玩？",
+    "expectedKeywords": ["兴趣", "氛围", "体验"],
+    "category": "约会"
+  },
+  {
+    "id": "eval_013",
+    "query": "异地恋见面频率多少合适？",
+    "expectedKeywords": ["沟通", "时间", "计划"],
+    "category": "异地恋"
+  },
+  {
+    "id": "eval_014",
+    "query": "什么时候是表白的最佳时机？",
+    "expectedKeywords": ["时机", "感情", "稳定"],
+    "category": "表白"
+  },
+  {
+    "id": "eval_015",
+    "query": "想分手但不知道怎么开口？",
+    "expectedKeywords": ["坦诚", "尊重", "时机"],
+    "category": "分手"
+  },
+  {
+    "id": "eval_016",
+    "query": "怎么判断暗恋的人是否喜欢自己？",
+    "expectedKeywords": ["关注", "互动", "细节"],
+    "category": "暗恋"
+  },
+  {
+    "id": "eval_017",
+    "query": "恋爱中总因为小事吵架怎么办？",
+    "expectedKeywords": ["包容", "沟通", "情绪"],
+    "category": "吵架"
+  },
+  {
+    "id": "eval_018",
+    "query": "纪念日送什么礼物最有意义？",
+    "expectedKeywords": ["回忆", "用心", "纪念"],
+    "category": "礼物"
+  },
+  {
+    "id": "eval_019",
+    "query": "相亲对象不主动联系我怎么办？",
+    "expectedKeywords": ["主动", "态度", "沟通"],
+    "category": "相亲"
+  },
+  {
+    "id": "eval_020",
+    "query": "怎么和伴侣表达自己的不满？",
+    "expectedKeywords": ["表达", "情绪", "沟通"],
+    "category": "沟通"
+  }
+]
