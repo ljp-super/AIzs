@@ -3,6 +3,11 @@ application-local.yml
 tmp
 data/pdf/*.pdf
 data/pdf/*.properties
+# 误解压的 jar 内容与编译产物（仅项目根目录）
+/META-INF/
+/com/
+/org/
+*.class
 
 ### BACKEND ###
 target/
